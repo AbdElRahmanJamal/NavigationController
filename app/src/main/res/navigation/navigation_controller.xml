@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools" android:id="@+id/navigation_controller"
+            app:startDestination="@id/today">
+
+    <fragment android:id="@+id/today" android:name="com.s.navigationcontroller.Today" android:label="Today"
+              tools:layout="@layout/fragment_today"/>
+    <fragment android:id="@+id/sevenDays" android:name="com.s.navigationcontroller.SevenDays"
+              android:label="Seven Days">
+        <action android:id="@+id/goToDetails" app:destination="@id/detailsFragment"
+                app:enterAnim="@anim/nav_default_enter_anim" app:exitAnim="@anim/nav_default_exit_anim"
+                app:popEnterAnim="@anim/nav_default_pop_enter_anim" app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+        <action android:id="@+id/goToSettings" app:destination="@id/SettingsPage"/>
+    </fragment>
+    <fragment android:id="@+id/SettingsPage" android:name="com.s.navigationcontroller.Settings"
+              android:label="Settings" tools:layout="@layout/fragment_settings"/>
+    <fragment android:id="@+id/detailsFragment" android:name="com.s.navigationcontroller.DetailsFragment"
+              android:label="Player Details" tools:layout="@layout/fragment_details">
+        <action android:id="@+id/backToHome" app:destination="@id/today"/>
+        <action android:id="@+id/goToSevenDays" app:destination="@id/sevenDays"/>
+        <argument android:name="PlayerDetails" app:argType="com.s.navigationcontroller.Player"/>
+    </fragment>
+</navigation>
